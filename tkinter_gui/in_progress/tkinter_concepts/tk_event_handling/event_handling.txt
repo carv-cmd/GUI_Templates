@@ -1,0 +1,73 @@
+Event Handling. (Again largely copy paste from TkDocs)
+--------------------------------------
+It's critical in event-driven applications that the event loop not be blocked.
+The event loop should run continuously, normally executing dozens of steps per second.
+At every step, it processes an event.
+If your program is performing a long operation, it can potentially block the event loop.
+In that case, no events are processed, no drawing is done, and it would appear as the application crashed.
+There are many ways to avoid this happening, mostly related to the structure of your application.
+--------------------------------------
+
+-------------------
+Command Callbacks
+-------------------
+You often want your program to handle some event in a particular way
+* e.g., do something when a button is pushed.
+For those events that are most frequently customized,
+* The widget allows you to specify a callback as a widget configuration option.
+Like the example with the 'command' option of the button.
+
+While it can be as complicated as you want to make it,
+most of the time, you'll just want your callback to call some other procedure.
+--------------------------------------
+
+-------------------
+Binding to Events
+-------------------
+For events that don't have a widget-specific command callback associated with them,
+We can use Tk's bind to capture any event, and then execute an arbitrary piece of code.
+Similar to callbacks
+
+For Example:
+An <Enter> event means the mouse has moved over top the widget
+A <Leave> event is generated when the mouse moves outside the widget to a different one.
+The <ButtonPress> is the actual event,
+* but the -1 is an event detail specifying the left (main) mouse button on the mouse.
+
+l.bind('<B3-Motion>'
+The last binding also uses a modifier: capture mouse movement (Motion),
+but only when the right mouse button (B3) is held down.
+This binding also shows an example of how to use 'event parameters'
+Tk provides access to these parameters in Tcl callback scripts through the use of 'percent substitutions'
+
+Tkinter abstracts away these percent substitutions
+* and instead encapsulates all the event parameters in an 'event object'
+--------------------------------------
+
+-------------------
+Multiple Bindings for an Event
+-------------------
+Your binding can capture not just a single event, but a short sequence of events.
+The <Double-1> binding triggers when two mouse clicks occur in a short time.
+You can do the same thing to capture two keys pressed in a row,
+e.g., <KeyPress-A><KeyPress-B> or simply <ab>.
+
+You can also set up an event binding on a toplevel window.
+When a matching event occurs anywhere in that window, the binding will be triggered.
+--------------------------------------
+
+-------------------
+Virtual Events
+-------------------
+Many widgets also generate higher level or semantic events called virtual events.
+These are indicated by double angle brackets around the event name, e.g., <<foo>>.
+For example, a listbox widget will generate a <<ListboxSelect>> virtual event whenever its selection changes.
+
+Virtual events avoid the problem of setting up multiple,
+possibly platform-specific event bindings to capture common changes.
+** The available virtual events for a widget will be listed in the documentation for the widget class.
+
+Tk also defines virtual events for common operations that are triggered in different ways for different platforms.
+These include <<Cut>>, <<Copy>> and <<Paste>>.
+
+root.event_generate("<<MyOwnEvent>>")

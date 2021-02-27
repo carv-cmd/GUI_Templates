@@ -1,0 +1,60 @@
+Available Events
+--------------------------------------
+For a complete description of all the different event names,
+modifiers, and the different event parameters that are available with each.
+The best place to look is the 'bind' command reference.
+
+Event detail for mouse events are the button that was pressed,
+* e.g. 1, 2, or 3.
+For keyboard events, it's the specific key,
+* e.g. A, 9, space, plus, comma, equal.
+
+** A complete list can be found in the 'keysyms' command reference.
+
+--------------------------------------
+--------------------------------------
+Most commonly used events:
+-------------
+-------------
+<Activate>
+* Window has become active.
+-------------
+<Deactivate>
+* Window has been deactivated.
+-------------
+<MouseWheel>
+* Scroll wheel on mouse has been moved.
+-------------
+<KeyPress>
+* Key on keyboard has been pressed down.
+-------------
+<KeyRelease>
+* Key has been released.
+-------------
+<ButtonPress>
+* A mouse button has been pressed.
+-------------
+<ButtonRelease>
+* A mouse button has been released.
+-------------
+<Motion>
+* Mouse has been moved.
+-------------
+<Configure>
+* Widget has changed size or position.
+-------------
+<Destroy>
+* Widget is being destroyed.
+-------------
+<FocusIn>
+* Widget has been given keyboard focus.
+-------------
+<FocusOut>
+* Widget has lost keyboard focus.
+-------------
+<Enter>
+* Mouse pointer enters widget.
+-------------
+<Leave>
+* Mouse pointer leaves widget.
+-------------

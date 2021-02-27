@@ -1,0 +1,38 @@
+-------------------
+Creating Widgets
+-------------------
+Each separate widget is a Python object.
+When instantiating a widget, you must pass its parent as a parameter to the widget class.
+The only exception is the "root" window, which is the toplevel window that will contain everything else.
+--------------------------------------
+
+
+-------------------
+Configuration Options
+-------------------
+The available options for a widget depend upon the widget class, obviously.
+But since theres a decent amount of consistency between different widget classes,
+Options that do pretty much the same thing are typically named the same
+
+Configuration options can be set when the widget is first created:
+Done by by specifying their names and values as optional parameters.
+Later, you can retrieve the current values of those options,
+And with a very small number of exceptions, change them at any time, like the conversion result
+
+We can also ask the widget to describe the configuration options it supports:
+- button['text']                    -::- text to check the current value of the text option
+- button['text'] = 'foobar'         -::- change the current value of the text option
+- button.configure(text='foobar')   -::- does the same thing
+- button.configure('text')          -::- get all information about the text option:
+- button.configure()                -::- get info on all options for this widget
+
+
+The five pieces of data provided for each configuration option:
+~~ 'command': ('command', 'command' , 'Command', '', 'buttonpressed') ~~
+
+- Most useful are the first, which is the option's 'name'
+- And the fifth, which is the option's 'current value'
+-- The fourth is the 'default value' of the option,
+-- In other words, the value it would have if you didn't change it.
+--- Other two relate to the option database (relates to menus)
+--------------------------------------

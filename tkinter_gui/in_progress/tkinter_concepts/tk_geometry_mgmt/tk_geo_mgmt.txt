@@ -1,0 +1,56 @@
+Geometry Management
+* (this is like 80% copy/paste from TkDocs link listed in the widgets.txt)
+--------------------------------------
+Placing widgets onscreen, and precisely where they are placed are 2 different things
+That latter part is a separate step called 'geometry management'
+
+'.grid()' is an example of a geometry manager, but here wll look at the general case
+
+The tasks of a geometry manager turns out to be a complex optimization problem,
+A good geometry manager relies on quite sophisticated algorithms to perform these
+
+A good geometry manager provides the flexibility, power,
+and ease of use that makes programmers happy.
+It also makes it easy to create good looking user interface
+layouts without needing to jump through hoops.
+Tk's grid is, without a doubt, one of the absolute best (.pack looks like shit)
+
+-------------------
+How it Works
+-------------------
+Geometry management in Tk relies on the concept of master and slave widgets.
+> A master is a widget, typically a toplevel application window or a frame
+-> The master then contains other widgets, called slaves.
+
+You can think of a geometry manager taking control of the master widget
+Then deciding how all the slave widgets will be displayed within.
+
+For Example:
+-------------
+Your program tells the geometry manager what slaves to manage within the master
+* i.e., via calling 'grid'
+
+Your program also provides hints as to how it would like each slave to be displayed,
+* e.g., via the 'column' and 'row' options
+
+You can also provide other things to the geometry manager.
+* i.e., used 'columnconfigure' and 'rowconfigure' to indicate
+** The columns and rows we'd like to expand if there is extra space available in the window.
+
+The geometry manager takes all the information about the slaves in the master,
+as well as information about how large the master is.
+
+It then asks each slave widget for its natural size,
+i.e., how large it would ideally like to be displayed.
+
+The geometry manager's internal algorithm calculates the area each slave will be allocated (if any!).
+The slave is then responsible for rendering itself within that particular rectangle.
+
+And of course, any time the size of the master changes
+(e.g., because the toplevel window was resized),
+the natural size of a slave changes
+(e.g., because we've changed the text in a label),
+or any of the geometry manager parameters change
+(e.g., like row, column, or sticky) we repeat the whole thing.
+
+All done recursively too!

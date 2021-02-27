@@ -1,0 +1,52 @@
+Paraphrased/Plagiarized from TkDocs/TkConcepts tutorial section
+"https://tkdocs.com/tutorial/concepts.html"
+
+-------------------
+Widgets:
+-------------------
+Relative to the basic_gui.py example
+These are things like buttons, entry fields, labels, and a frame
+Others include; checkboxes, tree views, scrollbars, text areas, etc.
+
+Widgets are often referred to as "controls"
+* Also sometimes seen referred to as 'Windows' (mainly Tk documentation)
+--------------------------------------
+
+
+-------------------
+Widget Classes:
+-------------------
+Widgets are objects, instances of classes that represent the elements of Tk
+So upon creation of a widget the very first thing we do is:
+Identify the specific class of the widget that we would like to instantiate
+--------------------------------------
+
+
+-------------------
+Widget Hierarchy:
+-------------------
+Also, to create a widget we must have a parent to associate it with
+Widgets need to have a parent 'container', they cant just float off arbitrarily..
+In Tk, all widgets are part of a "widget (or window) hierarchy"
+At the top the of the hierarchy is the 'root' which all other widgets trace back to
+* tree model w/ single root node ~ the window itself
+
+In the basic_gui.py example, consider the 'content frame'
+This was a single frame created as a child of the 'root window'
+Spawning from that frame were all the other controls (widgets) as children
+* The root window was a 'container' for the frame and was, therefore, the frames 'parent'
+
+This hierarchy can be nested arbitrarily deep
+Even a new window within the application ('toplevel') is part of that same hierarchy
+That window and all its contents form a subtree of the overall widget hierarchy.
+** From TkDocs link at header, scroll to 'Widget Hierarchy' to find the accompanying visuals
+--------------------------------------
+
+
+-------------------
+Creating Widgets
+-------------------
+Each separate widget is a Python object.
+When instantiating a widget, you must pass its parent as a parameter to the widget class.
+The only exception is the "root" window, which is the toplevel window that will contain everything else.
+--------------------------------------

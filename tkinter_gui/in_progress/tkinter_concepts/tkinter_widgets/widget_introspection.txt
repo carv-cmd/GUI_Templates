@@ -1,0 +1,55 @@
+-------------------
+Widget Introspection
+-------------------
+Much of the information about a widget that an application can take advantage of,
+Is available via the 'winfo' facility;
+** see the see the winfo command reference for full details.
+
+-------------
+winfo_class
+* a class identifying the type of widget, e.g. TButton for a themed button
+-------------
+winfo_children
+* a list of widgets that are the direct children of a widget in the hierarchy
+-------------
+winfo_parent
+* parent of the widget in the hierarchy
+-------------
+winfo_toplevel
+* the toplevel window containing this widget
+-------------
+winfo_width, winfo_height
+* current width and height of the widget; not accurate until appears onscreen
+-------------
+winfo_reqwidth, winfo_reqheight
+* the width and height the widget requests of the geometry manager
+-------------
+winfo_x, winfo_y
+* the position of the top-left corner of the widget relative to its parent
+-------------
+winfo_rootx, winfo_rooty
+* the position of the top-left corner of the widget relative to the entire screen
+-------------
+winfo_vieweable
+* whether the widget is displayed or hidden
+* (all its ancestors in the hierarchy must be viewable for it to be viewable)
+-------------
+--------------------------------------
+
+-------------------
+This short example traverses the widget hierarchy,
+using each widget's winfo_children method to identify any child widgets that need to examined.
+For each widget, we print some basic information,
+including it's class (button, frame, etc.), it's width and height,
+and it's position relative to it's parent.
+-------------------
+
+def print_hierarchy(w, depth=0):
+    print('  '*depth + w.winfo_class()
+                     + ' w=' + str(w.winfo_width())
+                     + ' h=' + str(w.winfo_height())
+                     + ' x=' + str(w.winfo_x())
+                     + ' y=' + str(w.winfo_y()))
+    for i in w.winfo_children():
+        print_hierarchy(i, depth+1)
+print_hierarchy(root)
