@@ -1,5 +1,4 @@
-# CodeCopy and notes paraphrasing from: 
-# https://tkdocs.com/tutorial/firstexample.html
+# CodeCopy and notes paraphrasing from https://tkdocs.com/tutorial/firstexample.html
 #####################################################
 #####################################################
 # tkinter * imports to core library and eliminates the requirement to prefix the module name
@@ -22,7 +21,7 @@ def calc(*args):
         pass
 
 root = Tk()
-root.title("Feet to Meters")
+root.title("Foot Fetish to Meters")
 
 
 mainframe = ttk.Frame(root, padding="3 3 12 12")
