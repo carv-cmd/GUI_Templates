@@ -1,0 +1,51 @@
+# CodeCopy and notes paraphrasing from https://tkdocs.com/tutorial/firstexample.html
+#####################################################
+Refer to basic_gui_notes.py for code examples
+#####################################################
+# tkinter * imports to core library and eliminates the requirement to prefix the module name
+# tkinter ttk submodule implements python bindings for 'themed widgets'
+# This includes things like buttons, labels, entry fields, etc.
+
+#################################
+def calculation('functions w/ tkinter'):
+    """
+    Notice how later we set the entry widget 'textvariable' to feet
+    This means anytime the entry changes, Tk automatically updates the value of feet
+    Similarly if we explicitly change the value of a textvariable associated with a widget
+    (as were doing for meters) the widget will automatically update with the contents of the variable
+    """
+
+#################################
+# Define the main application window, as well as titling it
+
+#################################
+# Creating a 'Content Frame' (parent_widget)
+# i.e.- Create a frame widget, which will hold the contents of the user interface
+# after creation, '.grid' places it directly inside main application window
+# column/row_configure tell frame to expand and fill any space is window's resized
+
+#################################
+# Creating an 'Entry Widget' where users can input the value for conversion (child_widget)
+# Need to, 1). 'Create' the widget itself & 2). 'Place' it onscreen
+# Need to also specify its parent: i.e.- the widget its nested within (here the 'content frame')
+# In Python the parent is passed as the first parameter when instantiating a widget object
+# We can optionally provide 'config_options' like the 'entry width' and 'textvariable'
+# '.grid()' places the widget object relative to the other widgets (think CSS grid layout-ish)
+# 'sticky' option defines how the widget should line up within the grid cell, using compass directions
+
+#################################
+# For all following widgets:
+# First create, then place onscreen in the appropriate cell in the grid
+#################################
+# Create a widget to display the output from our calculation
+# Widget button to press and execute the calculation
+# 3 static text labels for application guidance
+
+#################################
+# First part adds padding to each of the widgets within the content frame
+# Could've added in .grid() but this is a nice shortcut
+# Second part tells Tk to focus on the entry widget. Cursor automatically starts in entry field
+# Third part tells Tk to bind the 'Enter" key to call the calculate routine
+
+#################################
+# Start the event loop. Light the fireworks
